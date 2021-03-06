@@ -4,7 +4,7 @@
     <div class="collapse navbar-collapse">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <router-link class="nav-link" to="/habits">Habits</router-link>
+          <router-link class="nav-link" to="/">Habits</router-link>
         </li>
         <li class="nav-item">
           <router-link class="nav-link" to="/schedule">Schedule</router-link>
