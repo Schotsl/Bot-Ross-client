@@ -72,6 +72,7 @@ export default class ContactRow extends Vue {
 
   img {
     width: 50px;
+    height: 50px;
     margin-right: 0.75rem;
     border-radius: 100%;
   }

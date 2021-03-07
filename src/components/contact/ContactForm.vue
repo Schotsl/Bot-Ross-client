@@ -14,6 +14,10 @@
       </div>
     </div>
 
+    <div class="form-group">
+      <input type="file" class="form-control" ref="file" accept="image/x-png,image/jpeg" @change="handleUpload()"/>
+    </div>
+
     <button class="btn btn-primary btn-block" @click="addContact">
       Submit
     </button>
@@ -34,11 +38,13 @@ interface ObjectKeys {
 })
 export default class ContactForm extends Vue {
   private contact: ObjectKeys = {
+    image: '',
     lastname: '',
     firstname: '',
   };
 
   private errors: ObjectKeys = {
+    image: '',
     lastname: '',
     firstname: '',
   };
@@ -52,6 +58,28 @@ export default class ContactForm extends Vue {
     }
 
     return false;
+  }
+
+  handleUpload() {
+    // Store the input element
+    const input = this.$refs.file as HTMLInputElement;
+
+    if (input.files) {
+      // Fetch the first file
+      const file = input.files[0];
+      const reader = new FileReader();
+
+      // Load the image into a base64 string
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        if (reader.result) {
+          const result = reader.result;
+          const base64 = result.toString();
+
+          this.contact.image = base64;
+        }
+      };
+    }
   }
 
   validateInput() {
