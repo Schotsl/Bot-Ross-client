@@ -30,8 +30,8 @@
 import { Options, Vue } from 'vue-class-component';
 
 import Pagination from '@/components/Pagination.vue';
-import TaxonomyRow from '@/components/cards/TaxonomyRow.vue';
-import TaxonomyForm from '@/components/cards/TaxonomyForm.vue';
+import TaxonomyRow from '@/components/taxonomy/TaxonomyRow.vue';
+import TaxonomyForm from '@/components/taxonomy/TaxonomyForm.vue';
 
 interface Taxonomy {
   _id: {

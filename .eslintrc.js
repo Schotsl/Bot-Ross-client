@@ -13,11 +13,12 @@ module.exports = {
   },
   rules: {
     'max-len': 'off',
-    'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    'lines-between-class-members': 'off',
+    'guard-for-in': 'off',
     'no-underscore-dangle': 'off',
     'no-restricted-syntax': 'off',
-    'guard-for-in': 'off',
+    'lines-between-class-members': 'off',
+
+    'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
   },
 };

@@ -27,7 +27,7 @@
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component';
 
-import TaxonomyCard from '@/components/cards/TaxonomyCard.vue';
+import TaxonomyCard from '@/components/taxonomy/TaxonomyCard.vue';
 
 @Options({
   components: {
