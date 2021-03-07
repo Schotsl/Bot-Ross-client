@@ -3,52 +3,25 @@
     <div class="card-body">
       <h5 class="card-title">Taxonomies</h5>
 
-      <hr />
+      <hr/>
 
       <template v-if="taxonomies.length">
-        <div
-          class="item mb-3"
-          v-for="taxonomy in taxonomies"
-          :key="taxonomy.id"
-        >
-          <div class="title">
-            {{ taxonomy.title }}
-          </div>
-
-          <button
-            class="btn btn-outline-danger"
-            @click="deleteTaxonomy(taxonomy)"
-          >
-            Delete
-          </button>
-        </div>
-
+        <TaxonomyRow v-for="taxonomy in taxonomies" :key="taxonomy" :taxonomy="taxonomy" @deleteTaxonomy="deleteTaxonomy"/>
         <Pagination
           :limit="limit"
-          :offset="offset"
           :total="total"
+          :offset="offset"
           @updateOffset="updateOffset"
         />
       </template>
+
       <template v-else>
         <p class="text-center">No taxonomies found..</p>
       </template>
 
-      <hr />
+      <hr/>
 
-      <form class="mt-2">
-        <div class="form-group">
-          <input
-            type="text"
-            class="form-control"
-            v-model="title"
-            placeholder="Enter title"
-          />
-        </div>
-        <button class="btn btn-primary btn-block" @click="addTaxonomy">
-          Submit
-        </button>
-      </form>
+      <TaxonomyForm @addTaxonomy="addTaxonomy"/>
     </div>
   </div>
 </template>
@@ -57,6 +30,8 @@
 import { Options, Vue } from 'vue-class-component';
 
 import Pagination from '@/components/Pagination.vue';
+import TaxonomyRow from '@/components/cards/TaxonomyRow.vue';
+import TaxonomyForm from '@/components/cards/TaxonomyForm.vue';
 
 interface Taxonomy {
   _id: {
@@ -68,18 +43,19 @@ interface Taxonomy {
 @Options({
   components: {
     Pagination,
+    TaxonomyRow,
+    TaxonomyForm,
   },
 })
 export default class TaxonomyCard extends Vue {
   private total = 0;
   private limit = 5;
-  private title = '';
   private offset = 0;
   private taxonomies: Array<Taxonomy> = [];
 
   async loadTaxonomies() {
     const response = await fetch(
-      `http://192.168.2.195:42069/taxonomy?offset=${this.offset}`,
+      `http://192.168.2.195:42069/taxonomy?offset=${this.offset}&${this.limit}`,
     );
     const parsed = await response.json();
 
@@ -95,23 +71,22 @@ export default class TaxonomyCard extends Vue {
     await fetch(`http://192.168.2.195:42069/taxonomy/${taxonomy._id.$oid}`, {
       method,
     });
+
     this.loadTaxonomies();
   }
 
-  async addTaxonomy() {
-    const body = JSON.stringify({ title: this.title });
+  async addTaxonomy(taxonomy: Taxonomy) {
+    const body = JSON.stringify(taxonomy);
     const method = 'POST';
     const headers = { 'Content-Type': 'application/json' };
 
-    // Clear the input
-    this.title = '';
-
-    // Add the taxonomy to the database and fetch updated data
+    // Add the taxonomy to the database
     await fetch('http://192.168.2.195:42069/taxonomy', {
       method,
       headers,
       body,
     });
+
     this.loadTaxonomies();
   }
 
