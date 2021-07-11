@@ -19,7 +19,11 @@ import Background from "@/components/Background.vue";
     Background,
   },
 })
-export default class Home extends Vue {}
+export default class Home extends Vue {
+  mounted(): void {
+    document.title = `Home | Bot-Ross`;
+  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -30,81 +34,22 @@ export default class Home extends Vue {}
   display: flex;
   align-items: center;
   justify-content: center;
-}
 
-.center {
-  display: flex;
-  flex-direction: column;
-
-  .title {
-    color: white;
-    font-size: 6vw;
-    font-weight: 600;
-  }
-
-  .subtitle {
-    color: white;
-    font-size: 3vw;
-  }
-}
-
-@media only screen and (min-width: 600px) {
   .center {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+
     .title {
-      font-size: 5vw;
+      color: white;
+      font-size: 2em;
+      font-weight: 600;
     }
 
     .subtitle {
-      font-size: 2.5vw;
+      color: white;
+      font-size: 1em;
     }
   }
 }
-
-@media only screen and (min-width: 768px) {
-  .center {
-    .title {
-      font-size: 4vw;
-    }
-
-    .subtitle {
-      font-size: 2vw;
-    }
-  }
-}
-
-@media only screen and (min-width: 992px) {
-  .center {
-    .title {
-      font-size: 3vw;
-    }
-
-    .subtitle {
-      font-size: 1.5vw;
-    }
-  }
-}
-
-@media only screen and (min-width: 1200px) {
-  .center {
-    .title {
-      font-size: 2.5vw;
-    }
-
-    .subtitle {
-      font-size: 1.25vw;
-    }
-  }
-} 
-
-@media only screen and (min-width: 2200px) {
-  .center {
-    .title {
-      font-size: 2vw;
-    }
-
-    .subtitle {
-      font-size: 1vw;
-    }
-  }
-} 
 </style>

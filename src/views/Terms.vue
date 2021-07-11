@@ -20,20 +20,20 @@
       this license you may not:
     </p>
     <ul>
-      <li>modify or copy the materials;</li>
+      <li>Modify or copy the materials;</li>
       <li>
-        use the materials for any commercial purpose or for any public display;
+        Use the materials for any commercial purpose or for any public display;
       </li>
       <li>
-        attempt to reverse engineer any software contained on Sjors van Holst's
+        Attempt to reverse engineer any software contained on Sjors van Holst's
         Website;
       </li>
       <li>
-        remove any copyright or other proprietary notations from the materials;
+        Remove any copyright or other proprietary notations from the materials;
         or
       </li>
       <li>
-        transferring the materials to another person or "mirror" the materials
+        Transferring the materials to another person or "mirror" the materials
         on any other server.
       </li>
     </ul>
@@ -95,12 +95,12 @@
     </p>
 
     <h2>8. Your Privacy</h2>
-    <p>Please read our Privacy Policy.</p>
+    <p>Please read our <a href="/privacy-policy">privacy policy</a>.</p>
 
     <h2>9. Governing Law</h2>
     <p>
       Any claim related to Sjors van Holst's Website shall be governed by the
-      laws of nl without regards to its conflict of law provisions.
+      laws of Netherlands without regards to its conflict of law provisions.
     </p>
   </div>
 </template>
@@ -114,3 +114,36 @@ export default class Terms extends Vue {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.terms {
+  padding: 1em;
+
+  h1,
+  h2 {
+    margin: 0;
+  }
+
+  h1 {
+    font-weight: 500;
+    font-size: 1.5rem;
+    margin-bottom: -0.75rem;
+  }
+
+  h2 {
+    font-weight: 600;
+    font-size: 1.25rem;
+    margin-top: 1.25rem;
+  }
+
+  p {
+    font-size: 1rem;
+    margin: 0.4rem 0;
+  }
+
+  ul {
+    margin: 0;
+    font-size: 1rem;
+  }
+}
+</style>
