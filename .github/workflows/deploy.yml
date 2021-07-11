@@ -9,22 +9,20 @@ jobs:
   quality:
     name: Quality
     runs-on: ubuntu-latest
-
-    steps:
       - name: Checkout sources
         uses: actions/checkout@v2
-        
-      - name: Setup latest Deno version
-        uses: denolib/setup-deno@v2
-        with:
-          deno-version: v1.x
-      - name: Format
-        run: deno fmt --check src/**/*.ts
 
       - name: Install NPM dependencies
         run: npm install
-      - name: Lint
-        run: npm run lint
+
+      - name: Archive node_modules artifact
+        uses: actions/upload-artifact@main
+        with:
+          name: node_modules
+          path: node_modules
+
+      - name: Run NPM check
+        run: npm run check
 
   build:
     name: Build
@@ -33,11 +31,16 @@ jobs:
       - name: Checkout sources
         uses: actions/checkout@v2
 
-      - name: Install NPM dependencies
-        run: npm install
-      - name: Build
+      - name: Download node_modules artifact
+        uses: actions/download-artifact@main
+        with:
+          name: node_modules
+          path: node_modules
+
+      - name: Run NPM build
         run: npm run build
-      - name: Archive artifact
+
+      - name: Archive dist artifact
         uses: actions/upload-artifact@main
         with:
           name: dist
@@ -51,12 +54,12 @@ jobs:
       - name: Checkout sources
         uses: actions/checkout@v2
 
-      - name: Download artifact
+      - name: Download dist artifact
         uses: actions/download-artifact@main
         with:
           name: dist
           path: dist
-      - name: Deploy
+      - name: Deploy to Firebase
         uses: w9jds/firebase-action@master
         with:
           args: deploy
