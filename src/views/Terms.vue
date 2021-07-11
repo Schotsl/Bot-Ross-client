@@ -38,3 +38,13 @@
     <p>Any claim related to Sjors van Holst's Website shall be governed by the laws of nl without regards to its conflict of law provisions.</p>
   </div>
 </template>
+
+<script lang="ts">
+import { Vue } from 'vue-class-component';
+
+export default class Terms extends Vue {
+  mounted(): void {
+    document.title = `Terms of service | Bot-Ross`;
+  }
+}
+</script>
