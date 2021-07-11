@@ -19,7 +19,7 @@ jobs:
         with:
           deno-version: v1.x
       - name: Format
-        run: npm run format
+        run: deno fmt --check src/**/*.ts
 
       - name: Install NPM dependencies
         run: npm install
