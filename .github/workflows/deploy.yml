@@ -9,17 +9,13 @@ jobs:
   quality:
     name: Quality
     runs-on: ubuntu-latest
+
+    steps:
       - name: Checkout sources
         uses: actions/checkout@v2
 
       - name: Install NPM dependencies
         run: npm install
-
-      - name: Archive node_modules artifact
-        uses: actions/upload-artifact@main
-        with:
-          name: node_modules
-          path: node_modules
 
       - name: Run NPM check
         run: npm run check
@@ -31,16 +27,13 @@ jobs:
       - name: Checkout sources
         uses: actions/checkout@v2
 
-      - name: Download node_modules artifact
-        uses: actions/download-artifact@main
-        with:
-          name: node_modules
-          path: node_modules
+      - name: Install NPM dependencies
+        run: npm install
 
       - name: Run NPM build
         run: npm run build
 
-      - name: Archive dist artifact
+      - name: Archive artifact
         uses: actions/upload-artifact@main
         with:
           name: dist
@@ -54,11 +47,15 @@ jobs:
       - name: Checkout sources
         uses: actions/checkout@v2
 
-      - name: Download dist artifact
+      - name: Install NPM dependencies
+        run: npm install
+
+      - name: Download artifact
         uses: actions/download-artifact@main
         with:
           name: dist
           path: dist
+
       - name: Deploy to Firebase
         uses: w9jds/firebase-action@master
         with:
