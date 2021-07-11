@@ -1,4 +1,5 @@
 <template>
+  <!-- Generated using https://wweb.dev/resources/animated-css-background-generator/ -->
   <div class="background">
     <span></span>
     <span></span>

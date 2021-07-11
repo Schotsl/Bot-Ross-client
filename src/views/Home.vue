@@ -38,13 +38,73 @@ export default class Home extends Vue {}
 
   .title {
     color: white;
-    font-size: 3vw;
+    font-size: 6vw;
     font-weight: 600;
   }
 
   .subtitle {
     color: white;
-    font-size: 1.5vw;
+    font-size: 3vw;
   }
 }
+
+@media only screen and (min-width: 600px) {
+  .center {
+    .title {
+      font-size: 5vw;
+    }
+
+    .subtitle {
+      font-size: 2.5vw;
+    }
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .center {
+    .title {
+      font-size: 4vw;
+    }
+
+    .subtitle {
+      font-size: 2vw;
+    }
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .center {
+    .title {
+      font-size: 3vw;
+    }
+
+    .subtitle {
+      font-size: 1.5vw;
+    }
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .center {
+    .title {
+      font-size: 2.5vw;
+    }
+
+    .subtitle {
+      font-size: 1.25vw;
+    }
+  }
+} 
+
+@media only screen and (min-width: 2200px) {
+  .center {
+    .title {
+      font-size: 2vw;
+    }
+
+    .subtitle {
+      font-size: 1vw;
+    }
+  }
+} 
 </style>
