@@ -47,9 +47,6 @@ jobs:
       - name: Checkout sources
         uses: actions/checkout@v2
 
-      - name: Install NPM dependencies
-        run: npm install
-
       - name: Download artifact
         uses: actions/download-artifact@main
         with:
