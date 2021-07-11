@@ -4,7 +4,7 @@
 
     <div class="center">
       <span class="title">This site is under construction</span>
-      <span class="subtitle">So many projects yet so little time...</span>
+      <span class="subtitle">So many projects, so little time...</span>
     </div>
   </div>
 </template>
@@ -21,7 +21,7 @@ import Background from "@/components/Background.vue";
 })
 export default class Home extends Vue {
   mounted(): void {
-    document.title = `Home | Bot-Ross`;
+    document.title = `Oops! | Bot-Ross`;
   }
 }
 </script>
